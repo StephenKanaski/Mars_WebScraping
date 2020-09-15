@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>body {background-color: #78281F;}</style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="jumbotron text-center" style="background-color: black">
+            <img src="/mars.png" alt="martian" class="img-thumbnail">
+            <h1 style="color:white">Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+        </div>
+    </div>
+
+    <!--Mars: Recent News-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="media">
+                <div class="media-body">
+                    <h2 id="news" style="color:black">Most Recent Martian News</h2>
+                    <h4 class="media-heading" style="color:white">{{mars.news_title}}</h4>
+                    <h5 style="color:white">
+                        <p>{{mars.news_p}}</p>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Featured Image-->
+    <div class="row">
+        <div class="col-md-9">
+            <h2 id="featured_img" style="color:black">Featured Mars Image</h2>
+            <img src="{{mars.featured_img}}" class="img-responsive">
+        </div>
+    </div>
+
+    <!--Mars HTML table-->
+    <div class="row">
+        <h2 style="color:black">Mars Facts</h2>
+        <div class="col-md-12" style="color:white">
+            {{mars.html_marstable}}
+        </div>
+    </div>
+
+    <!--Martian Hemisphere Data-->
+    {% for hemisphere in mars.hem_img-url %}
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <img src="{{hemisphere.img_url}}">
+            <div class="caption" style="color:black">
+                <h3>{{hemisphere.title}}</h3>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</body>
+
+</html>
